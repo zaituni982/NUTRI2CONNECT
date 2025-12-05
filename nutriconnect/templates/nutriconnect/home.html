@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NUTRI-2-CONNECT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container">
+        <a class="navbar-brand" href="#">NUTRI-2-CONNECT</a>
+    </div>
+</nav>
+
+<div class="container mt-5 text-center">
+    <h1 class="mb-4">Welcome to NUTRI-2-CONNECT</h1>
+    <p class="mb-4">Connecting Farmers and Clients Easily</p>
+    <div class="d-flex justify-content-center gap-3">
+        <a href="{% url 'farmer_list' %}" class="btn btn-success btn-lg">Farmers</a>
+        <a href="{% url 'client_list' %}" class="btn btn-primary btn-lg">Clients</a>
+    </div>
+</div>
+
+</body>
+</html>
+

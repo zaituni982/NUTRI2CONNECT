@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NUTRI-2-CONNECT</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f4; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 8px; }
+        h1, h2 { color: #2d6a4f; }
+        a { text-decoration: none; color: #1b4332; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; background: #fff; }
+        table, th, td { border: 1px solid #ddd; }
+        th, td { padding: 12px; text-align: left; }
+        th { background-color: #2d6a4f; color: #fff; }
+        .btn {
+            padding: 10px 15px;
+            background-color: #2d6a4f;
+            color: white;
+            border-radius: 5px;
+        }
+        .btn-danger {
+            background: #b00020;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>NUTRI-2-CONNECT</h1>
+    <hr>
+    <div style="text-align: right; margin-bottom: 20px;">
+    {% if user.is_authenticated %}
+        Welcome, {{ user.username }} |
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a> |
+        <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+</div>
+
+</div>
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+</body>
+</html>

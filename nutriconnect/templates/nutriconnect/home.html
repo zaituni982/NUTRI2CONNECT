@@ -1,26 +1,165 @@
+<{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NUTRI-2-CONNECT</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUTRI2CONNECT</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        /* Hero Section */
+        .hero {
+            background: url("{% static 'images/hero-bg.jpg' %}") no-repeat center center/cover;
+            height: 100vh;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+        }
+        .btn-cta {
+            background-color: #28a745;
+            color: white;
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .btn-cta:hover {
+            background-color: #1e7e34;
+            color: white;
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: 80px 0;
+            background-color: #f7f9f9;
+        }
+        .info-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .info-card:hover {
+            transform: translateY(-10px);
+        }
+        .info-card img {
+            width: 60px;
+            margin-bottom: 20px;
+        }
+        .info-card h3 {
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        /* Navbar */
+        .navbar-custom {
+            background-color: rgba(40, 167, 69, 0.9);
+        }
+        .navbar-custom a.nav-link {
+            color: white;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: 0.3s;
+        }
+        .navbar-custom a.nav-link:hover {
+            color: #d4edda;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #28a745;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-success">
-    <div class="container">
-        <a class="navbar-brand" href="#">NUTRI-2-CONNECT</a>
-    </div>
-</nav>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold" href="#">NUTRI2CONNECT</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-sm btn-success text-white" href="{% url 'login' %}">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<div class="container mt-5 text-center">
-    <h1 class="mb-4">Welcome to NUTRI-2-CONNECT</h1>
-    <p class="mb-4">Connecting Farmers and Clients Easily</p>
-    <div class="d-flex justify-content-center gap-3">
-        <a href="{% url 'farmer_list' %}" class="btn btn-success btn-lg">Farmers</a>
-        <a href="{% url 'client_list' %}" class="btn btn-primary btn-lg">Clients</a>
-    </div>
-</div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to NUTRI2CONNECT</h1>
+            <p>Connecting farmers and clients for a sustainable agriculture future</p>
+            <a href="{% url 'register' %}" class="btn-cta">Get Started</a>
+        </div>
+    </section>
 
+    <!-- Info / Features Section -->
+    <section class="info-section" id="features">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <img src="{% static 'images/farmer.png' %}" alt="Farmer">
+                        <h3>For Farmers</h3>
+                        <p>Showcase products, manage requests, and connect with clients efficiently.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <img src="{% static 'images/client.png' %}" alt="Client">
+                        <h3>For Clients</h3>
+                        <p>Discover quality products, place orders, and track requests seamlessly.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <img src="{% static 'images/analytics.png' %}" alt="Analytics">
+                        <h3>Analytics</h3>
+                        <p>Monitor activity and insights on a clean, easy-to-use dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>&copy; 2025 NUTRI2CONNECT | Connecting Agriculture & Technology</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

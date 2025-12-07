@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - FarmConnect</title>
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main class="p-6 flex-1 bg-fefcf3 min-h-screen">
+    <div class="max-w-xl mx-auto card">
+      <h2 class="text-2xl font-bold text-green-700 mb-4">My Profile</h2>
+      <form>
+        <label class="block mb-2 font-semibold">Full Name</label>
+        <input type="text" value="John Doe" class="w-full p-3 mb-4 border rounded focus:outline-green-600" />
+        <label class="block mb-2 font-semibold">Email</label>
+        <input type="email" value="john@example.com" class="w-full p-3 mb-4 border rounded focus:outline-green-600" />
+        <label class="block mb-2 font-semibold">Farm Location</label>
+        <input type="text" value="Springfield Farm" class="w-full p-3 mb-4 border rounded focus:outline-green-600" />
+        <button type="submit" class="primary-btn w-full">Update Profile</button>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      });
+  </script>
+</body>
+</html>

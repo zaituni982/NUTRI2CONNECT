@@ -1,4 +1,23 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}FarmConnect{% endblock %}</title>
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+</head>
+<body class="bg-fefcf3 font-sans">
+  
+  {% include 'navbar.html' %}
+
+  <main class="p-6">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include 'footer.html' %}
+</body>
+</html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">

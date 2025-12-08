@@ -1,165 +1,172 @@
-<{% load static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NUTRI2CONNECT</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>NUTRI2CONNECT - Home</title>
+    <link rel="stylesheet" href="{% static 'nutriconnect/css/styles.css' %}">
     <style>
+        /* ---------- Base Styles ---------- */
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            background: #fefcf3;
+            color: #333;
         }
-        /* Hero Section */
-        .hero {
-            background: url("{% static 'images/hero-bg.jpg' %}") no-repeat center center/cover;
-            height: 100vh;
+        a { text-decoration: none; color: inherit; }
+
+        /* ---------- Navbar ---------- */
+        nav {
+            background: linear-gradient(90deg, #ff7e5f, #feb47b); /* vibrant orange gradient */
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             color: white;
-            text-align: center;
+        }
+        nav .logo { font-weight: bold; font-size: 24px; }
+        nav .menu a {
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav .menu a:hover { color: #fff3e0; }
+
+        /* ---------- Hero Section ---------- */
+        .hero {
+            background: url("{% static 'nutriconnect/images/hero-bg.jpg' %}") no-repeat center/cover;
+            height: 500px;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
         }
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
-        }
-        .hero p {
-            font-size: 1.5rem;
-            margin: 20px 0;
-            text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
-        }
-        .btn-cta {
-            background-color: #28a745;
+        .hero h1 { font-size: 50px; margin-bottom: 20px; }
+        .hero p { font-size: 22px; margin-bottom: 30px; }
+        .hero .btn {
+            background: #ff6f61; /* vibrant coral button */
             color: white;
-            font-weight: 600;
             padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            transition: 0.3s;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s;
         }
-        .btn-cta:hover {
-            background-color: #1e7e34;
-            color: white;
-        }
+        .hero .btn:hover { background: #ff4b3e; }
 
-        /* Info Section */
-        .info-section {
-            padding: 80px 0;
-            background-color: #f7f9f9;
+        /* ---------- Features Section ---------- */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 50px 20px;
+            background-color: #fff5f0;
         }
-        .info-card {
-            background-color: white;
+        .feature-card {
+            background: white;
             border-radius: 15px;
-            padding: 30px;
-            margin: 15px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            width: 280px;
+            margin: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .info-card:hover {
-            transform: translateY(-10px);
+        .feature-card:hover { 
+            transform: translateY(-7px); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
-        .info-card img {
-            width: 60px;
-            margin-bottom: 20px;
-        }
-        .info-card h3 {
-            font-weight: 700;
+        .feature-card img {
+            width: 120px;
+            height: 120px;
             margin-bottom: 15px;
         }
+        .feature-card h3 { margin-bottom: 10px; color: #ff6f61; }
+        .feature-card p { font-size: 14px; color: #555; }
 
-        /* Navbar */
-        .navbar-custom {
-            background-color: rgba(40, 167, 69, 0.9);
-        }
-        .navbar-custom a.nav-link {
-            color: white;
-            font-weight: 500;
-            margin: 0 10px;
-            transition: 0.3s;
-        }
-        .navbar-custom a.nav-link:hover {
-            color: #d4edda;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #28a745;
-            color: white;
-            padding: 40px 0;
+        /* ---------- About Section ---------- */
+        .about {
+            padding: 60px 20px;
             text-align: center;
+            background: linear-gradient(90deg, #f9d423, #ff4e50);
+            color: white;
         }
+        .about h2 { margin-bottom: 25px; font-size: 36px; }
+        .about p { max-width: 800px; margin: auto; line-height: 1.7; font-size: 16px; }
+
+        /* ---------- Footer ---------- */
+        footer {
+            background-color: #ff6f61;
+            color: white;
+            text-align: center;
+            padding: 25px 10px;
+        }
+        footer a { color: #fff8f0; }
     </style>
 </head>
 <body>
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-        <div class="container">
-            <a class="navbar-brand text-white fw-bold" href="#">NUTRI2CONNECT</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-sm btn-success text-white" href="{% url 'login' %}">Login</a></li>
-                </ul>
-            </div>
+    <nav>
+        <div class="logo"><a href="{% url 'home' %}">NUTRI2CONNECT</a></div>
+        <div class="menu">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="#about">About</a>
+            {% if user.is_authenticated %}
+                <a href="#">Profile</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'register' %}">Register</a>
+            {% endif %}
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <h1>Welcome to NUTRI2CONNECT</h1>
-            <p>Connecting farmers and clients for a sustainable agriculture future</p>
-            <a href="{% url 'register' %}" class="btn-cta">Get Started</a>
+        <h1>Connecting Farmers & Clients Seamlessly</h1>
+        <p>Your one-stop platform to buy, sell, and collaborate in agriculture</p>
+        <a href="{% url 'register' %}" class="btn">Get Started</a>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <img src="{% static 'nutriconnect/images/farmer.png' %}" alt="Farmer">
+            <h3>Farmers</h3>
+            <p>List your produce, manage your farm, and reach clients efficiently.</p>
+        </div>
+        <div class="feature-card">
+            <img src="{% static 'nutriconnect/images/client.png' %}" alt="Client">
+            <h3>Clients</h3>
+            <p>Find local farmers, place orders, and track your deliveries effortlessly.</p>
+        </div>
+        <div class="feature-card">
+            <img src="{% static 'nutriconnect/images/analytics.png' %}" alt="Analytics">
+            <h3>Insights & Analytics</h3>
+            <p>Get data-driven insights to improve production, sales, and distribution.</p>
         </div>
     </section>
 
-    <!-- Info / Features Section -->
-    <section class="info-section" id="features">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <div class="info-card">
-                        <img src="{% static 'images/farmer.png' %}" alt="Farmer">
-                        <h3>For Farmers</h3>
-                        <p>Showcase products, manage requests, and connect with clients efficiently.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="info-card">
-                        <img src="{% static 'images/client.png' %}" alt="Client">
-                        <h3>For Clients</h3>
-                        <p>Discover quality products, place orders, and track requests seamlessly.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="info-card">
-                        <img src="{% static 'images/analytics.png' %}" alt="Analytics">
-                        <h3>Analytics</h3>
-                        <p>Monitor activity and insights on a clean, easy-to-use dashboard.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About NUTRI2CONNECT</h2>
+        <p>NUTRI2CONNECT is a web platform designed to bridge the gap between farmers and clients. 
+        Whether you are a farmer looking to sell your produce or a client searching for fresh farm products, 
+        NUTRI2CONNECT provides a seamless experience. Our features include secure registration, easy login, 
+        profile management, and data analytics to help users make informed decisions.</p>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
-        <p>&copy; 2025 NUTRI2CONNECT | Connecting Agriculture & Technology</p>
+    <footer>
+        <p>&copy; 2025 NUTRI2CONNECT | Contact us: <a href="mailto:support@nutri2connect.com">support@nutri2connect.com</a></p>
+        <p>Follow us on <a href="#">Twitter</a> | <a href="#">Facebook</a> | <a href="#">Instagram</a></p>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

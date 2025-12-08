@@ -1,8 +1,22 @@
-<nav class="bg-green-700 text-white p-4 flex justify-between navbar">
-  <span class="font-bold text-lg">FarmConnect</span>
-  <div>
-    <a href="dashboard.html" class="mr-4">Dashboard</a>
-    <a href="profile.html" class="mr-4">Profile</a>
-    <a href="login.html">Logout</a>
-  </div>
-</nav>
+<div style="background:#2d6a4f; padding:15px;">
+    <div style="max-width:1000px; margin:auto; color:white; display:flex; justify-content:space-between;">
+        
+        <div>
+            <a href="{% url 'home' %}" style="color:white; font-weight:bold; font-size:20px;">
+                NUTRI-2-CONNECT
+            </a>
+        </div>
+
+        <div>
+            {% if user.is_authenticated %}
+                <span>Welcome, {{ user.username }} | </span>
+                <a href="{% url 'logout' %}" style="color:white;">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}" style="color:white; margin-right:10px;">Login</a>
+                <a href="{% url 'register' %}" style="color:white;">Register</a>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+

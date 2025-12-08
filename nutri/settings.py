@@ -127,8 +127,8 @@ USE_TZ = True
 MPESA_ENVIRONMENT = 'sandbox'
 
 # Credentials from your Daraja App
-MPESA_CONSUMER_KEY = 'GKwF29dNNAu5ofeteBSXu3hxjbe6r1c1tpOcEvnWleK8jTcz'
-MPESA_CONSUMER_SECRET = 'yz78UtNsDnNGIEEMGIa6Kg70jHF5F3rblngJs6eYPcAeZwseJMzPBzB7Jh7igetsYOUR_CONSUMER_SECRET'
+MPESA_CONSUMER_KEY = 'CONSUMER KEY'
+MPESA_CONSUMER_SECRET = 'YOUR_CONSUMER_SECRET'
 
 # For Lipa na M-PESA Online (STK Push)
 MPESA_EXPRESS_SHORTCODE = '174379' # Use 174379 for Safaricom Sandbox
@@ -141,5 +141,10 @@ MPESA_API_URL = 'YOUR_PUBLIC_HOST'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
 
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

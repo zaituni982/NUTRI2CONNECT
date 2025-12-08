@@ -1,34 +1,69 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register - FarmConnect</title>
-  <link href="styles.css" rel="stylesheet">
+  <title>Register - NUTRI2CONNECT</title>
+  <link rel="stylesheet" href="{% static 'nutriconnect/css/styles.css' %}">
+  <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0; padding: 0; background: #fefcf3;
+    }
+    nav {
+        background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white;
+    }
+    nav .logo { font-weight: bold; font-size: 24px; }
+    nav .menu a { margin-left: 20px; color: white; font-weight: 500; transition: color 0.3s; }
+    nav .menu a:hover { color: #fff3e0; }
+
+    .form-container {
+        max-width: 450px; margin: 60px auto; background: white;
+        padding: 40px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    h2 { text-align: center; color: #ff6f61; margin-bottom: 30px; }
+    input[type="text"], input[type="password"] {
+        width: 100%; padding: 12px 15px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 6px;
+        font-size: 16px; outline: none; transition: border-color 0.3s;
+    }
+    input:focus { border-color: #ff6f61; }
+    button {
+        width: 100%; padding: 12px; background: #ff6f61; color: white; font-weight: bold;
+        border: none; border-radius: 8px; font-size: 16px; cursor: pointer; transition: background 0.3s;
+    }
+    button:hover { background: #ff4b3e; }
+    .text-center { text-align: center; margin-top: 15px; }
+    .text-center a { color: #ff6f61; font-weight: bold; }
+    .text-center a:hover { color: #ff4b3e; }
+  </style>
 </head>
 <body>
-  <div id="navbar"></div>
 
-  <div class="flex items-center justify-center min-h-screen">
-    <div class="card w-full max-w-md">
-      <h2 class="text-2xl font-bold text-green-700 mb-6 text-center">Create an Account</h2>
-      <form>
-        <input type="text" placeholder="Full Name" class="w-full p-3 mb-4 border rounded focus:outline-green-600" />
-        <input type="email" placeholder="Email" class="w-full p-3 mb-4 border rounded focus:outline-green-600" />
-        <input type="password" placeholder="Password" class="w-full p-3 mb-4 border rounded focus:outline-green-600" />
-        <button type="submit" class="primary-btn w-full">Register</button>
+  <!-- Navbar -->
+  <nav>
+      <div class="logo"><a href="{% url 'home' %}">NUTRI2CONNECT</a></div>
+      <div class="menu">
+          <a href="{% url 'home' %}">Home</a>
+          <a href="{% url 'login' %}">Login</a>
+      </div>
+  </nav>
+
+  <!-- Register Form -->
+  <div class="form-container">
+      <h2>Register</h2>
+      <form method="POST" action="{% url 'register' %}">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Register</button>
       </form>
-      <p class="text-center mt-4 text-sm">Already have an account? <a href="login.html" class="text-green-600 font-semibold">Login</a></p>
-    </div>
+      <div class="text-center">
+          Already have an account? <a href="{% url 'login' %}">Login</a>
+      </div>
   </div>
 
-  <script>
-    fetch('navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar').innerHTML = data;
-      });
-  </script>
 </body>
 </html>
+
 

@@ -1,10 +1,10 @@
 {% extends 'nutriconnect/base.html' %}
-
 {% load static %}
 
 {% block title %}Marketplace{% endblock %}
 
 {% block content %}
+
 <!-- Hero Section -->
 <section style="background: url('{% static "images/hero-bg.jpg" %}') no-repeat center center; background-size: cover; padding: 80px 20px; color: black; text-align: center;">
     <h1 style="font-size: 3rem; font-weight: bold;">Welcome to NUTRI-2-CONNECT Marketplace</h1>
@@ -15,10 +15,19 @@
 <!-- Farmers Listing -->
 <section id="farmers" style="padding: 50px 20px; background-color: #f4f4f4;">
     <h2 style="text-align: center; color: #2d6a4f; margin-bottom: 30px;">Farmers Listing</h2>
+
+    <!-- Farmers banner image -->
+    <div style="text-align:center; margin-bottom: 25px;">
+        <img src="{% static 'images/farmers-banner.jpg' %}" alt="Farmers Banner" style="width: 70%; max-width: 700px; border-radius: 10px;">
+    </div>
+
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
         {% for farmer in farmers %}
         <div style="background: white; padding: 20px; border-radius: 8px; width: 250px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center;">
+
+            <!-- Farmer profile image -->
             <img src="{% static 'images/farmer.png' %}" alt="Farmer" style="width: 80px; height: 80px; margin-bottom: 10px;">
+
             <h3>{{ farmer.name }}</h3>
             <p><strong>Farm:</strong> {{ farmer.farm_name }}</p>
             <p><strong>Location:</strong> {{ farmer.location }}</p>
@@ -33,10 +42,19 @@
 <!-- Offers Section -->
 <section id="offers" style="padding: 50px 20px; text-align: center;">
     <h2 style="color: #2d6a4f; margin-bottom: 30px;">Current Offers</h2>
+
+    <!-- Offers showcase image -->
+    <div style="text-align:center; margin-bottom: 25px;">
+        <img src="{% static 'images/offers-banner.jpg' %}" alt="Offers Showcase" style="width: 65%; max-width: 650px; border-radius: 10px;">
+    </div>
+
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
         {% for offer in offers %}
         <div style="background: #ffffff; padding: 20px; border-radius: 8px; width: 220px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <img src="{% static 'images/client.png' %}" alt="Offer" style="width: 70px; height: 70px; margin-bottom: 10px;">
+
+            <!-- Offer image -->
+            <img src="{% static 'images/offer.png' %}" alt="Offer" style="width: 70px; height: 70px; margin-bottom: 10px;">
+
             <h3>{{ offer.produce.name }}</h3>
             <p><strong>Price:</strong> KSH {{ offer.price }}</p>
             <p><strong>Farmer:</strong> {{ offer.farmer.name }}</p>
@@ -50,10 +68,19 @@
 <!-- Produce Section -->
 <section id="produce" style="padding: 50px 20px; background-color: #f4f4f4; text-align: center;">
     <h2 style="color: #2d6a4f; margin-bottom: 30px;">Available Produce</h2>
+
+    <!-- Produce banner image -->
+    <div style="text-align:center; margin-bottom: 25px;">
+        <img src="{% static 'images/produce-banner.jpg' %}" alt="Produce Banner" style="width: 70%; max-width: 700px; border-radius: 10px;">
+    </div>
+
     <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
         {% for produce in produce_list %}
         <div style="background: white; padding: 15px; border-radius: 8px; width: 180px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            <img src="{% static 'images/analytics.png' %}" alt="{{ produce.name }}" style="width: 70px; height: 70px; margin-bottom: 10px;">
+
+            <!-- Produce image -->
+            <img src="{% static 'images/produce.png' %}" alt="{{ produce.name }}" style="width: 70px; height: 70px; margin-bottom: 10px;">
+
             <h4>{{ produce.name }}</h4>
             <p><strong>Price:</strong> KSH {{ produce.price }}</p>
         </div>
@@ -66,6 +93,13 @@
 <!-- CTA Section -->
 <section style="padding: 60px 20px; background-color: #2d6a4f; text-align: center; color: white;">
     <h2 style="margin-bottom: 20px;">Ready to connect with farmers?</h2>
+
+    <!-- CTA image -->
+    <div style="margin-bottom: 20px;">
+        <img src="{% static 'images/connect.png' %}" alt="Connect" style="width: 120px; opacity: 0.9;">
+    </div>
+
     <a href="{% url 'register' %}" style="padding: 14px 28px; background-color: #ff7f50; color: white; border-radius: 6px; font-weight: bold; text-decoration: none;">Register Now</a>
 </section>
+
 {% endblock %}

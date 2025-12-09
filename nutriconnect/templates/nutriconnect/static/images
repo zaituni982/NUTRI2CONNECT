@@ -1,4 +1,0 @@
-<img src="{% static 'nutriconnect/images/farmer.png' %}" alt="Farmer">
-<img src="{% static 'nutriconnect/images/client.png' %}" alt="Client">
-<img src="{% static 'nutriconnect/images/hero-bg.jpg' %}" alt="Hero Banner">
-<img src="{% static 'nutriconnect/images/analytics.png' %}" alt="Analytics">

@@ -1,0 +1,234 @@
+/* ==============================================
+   GLOBAL STYLES
+============================================== */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    background: #fefcf3;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* ==============================================
+   HEADER / NAVBAR
+============================================== */
+header {
+    background: #1b4332;
+    padding: 15px 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+header a {
+    color: white;
+    font-weight: bold;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+header a:hover {
+    color: #ff7f50;
+}
+
+nav a {
+    margin: 0 10px;
+}
+
+/* ==============================================
+   BUTTONS
+============================================== */
+.btn {
+    display: inline-block;
+    background: #2d6a4f;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.btn:hover {
+    background: #1b4332;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: #b00020;
+}
+
+.btn-danger:hover {
+    background: #8a0015;
+}
+
+/* ==============================================
+   MAIN / HERO SECTION
+============================================== */
+main {
+    padding: 30px 0;
+}
+
+.hero {
+    background: url("../images/hero-bg.jpg") no-repeat center/cover;
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+/* ==============================================
+   SECTIONS & CARDS
+============================================== */
+section {
+    margin-bottom: 50px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+/* ==============================================
+   FORMS
+============================================== */
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: auto;
+}
+
+form h2 {
+    text-align: center;
+    color: #2d6a4f;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+form input, form select, form textarea, form button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+form button {
+    background: #2d6a4f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form button:hover {
+    background: #1b4332;
+    transform: translateY(-2px);
+}
+
+/* ==============================================
+   FOOTER
+============================================== */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: #1b4332;
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* ==============================================
+   MARKETPLACE / LISTINGS
+============================================== */
+.marketplace {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.marketplace .card {
+    flex: 1 1 calc(33% - 20px);
+    min-width: 250px;
+}
+
+/* ==============================================
+   RESPONSIVE
+============================================== */
+@media (max-width: 1024px) {
+    .marketplace .card {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .marketplace .card {
+        flex: 1 1 100%;
+    }
+}
+

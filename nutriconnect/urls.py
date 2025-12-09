@@ -5,6 +5,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('marketplace/', views.marketplace, name='marketplace'),
 
     # Authentication URLs
     path('login/', auth_views.LoginView.as_view(template_name='nutriconnect/login.html'), name='login'),

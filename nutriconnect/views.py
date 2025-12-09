@@ -4,6 +4,8 @@ from .forms import FarmerForm, ClientForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from .models import Farmer, Produce, Offer
+
 
 # Home view
 def home(request):
@@ -20,6 +22,18 @@ def register(request):
         form = UserCreationForm()
     
     return render(request, 'nutriconnect/register.html', {'form': form})
+
+def marketplace(request):
+    farmers = Farmer.objects.all()
+    produce = Produce.objects.all()
+    offers = Offer.objects.all()
+
+    return render(request, "nutriconnect/marketplace.html", {
+        "farmers": farmers,
+        "produce": produce,
+        "offers": offers,
+    })
+
 
 
 

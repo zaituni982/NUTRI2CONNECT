@@ -57,6 +57,9 @@ ROOT_URLCONF = 'nutri.urls'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
+LOGIN_REDIRECT_URL = 'marketplace'
+LOGOUT_REDIRECT_URL = 'home'
+
 
 
 TEMPLATES = [

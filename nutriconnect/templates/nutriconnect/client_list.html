@@ -1,44 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Clients List</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+{% extends 'nutriconnect/base.html' %}
+{% block title %}Clients List{% endblock %}
+
+{% block content %}
 <div class="container mt-5">
-    <h2 class="mb-4">Clients</h2>
-    <a href="{% url 'client_create' %}" class="btn btn-primary mb-3">Add New Client</a>
-    <table class="table table-bordered table-striped">
-        <thead class="table-primary">
-            <tr>
-                <th>Name</th>
-                <th>Contact</th>
-                <th>Location</th>
-                <th>Interested Produce</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for client in clients %}
-            <tr>
-                <td>{{ client.name }}</td>
-                <td>{{ client.contact }}</td>
-                <td>{{ client.location }}</td>
-                <td>{{ client.interested_produce }}</td>
-                <td>
-                    <a href="{% url 'client_update' client.id %}" class="btn btn-sm btn-primary">Edit</a>
-                    <a href="{% url 'client_delete' client.id %}" class="btn btn-sm btn-danger">Delete</a>
-                </td>
-            </tr>
-        {% empty %}
-            <tr>
-                <td colspan="5" class="text-center">No clients found.</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <a href="{% url 'home' %}" class="btn btn-secondary mt-3">Back to Home</a>
+    <h2 class="mb-4 text-primary">👥 Registered Clients</h2>
+    
+    <a href="{% url 'client_create' %}" class="btn btn-primary mb-4 shadow-sm">
+        <i class="fas fa-plus-circle"></i> Add New Client
+    </a>
+    
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Location</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for client in clients %}
+                <tr>
+                    <td>{{ client.id }}</td>
+                    <td>{{ client.name }}</td>
+                    <td>{{ client.email }}</td>
+                    <td>{{ client.contact }}</td>
+                    <td>{{ client.location }}</td>
+                    <td class="text-center">
+                        <a href="{% url 'client_update' client.id %}" class="btn btn-sm btn-outline-primary me-2">Edit</a>
+                        
+                        <form action="{% url 'client_delete' client.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Confirm deletion of client {{ client.name }}?');">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center text-muted">No clients found. Start by adding a new client!</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <a href="{% url 'home' %}" class="btn btn-secondary mt-3">← Back to Home</a>
 </div>
-</body>
-</html>
+{% endblock %}

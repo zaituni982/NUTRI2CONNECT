@@ -1,0 +1,28 @@
+{% extends 'nutriconnect/base.html' %}
+{% load static %}
+
+{% block title %}Buy Produce{% endblock %}
+
+{% block content %}
+<section style="padding: 50px 20px; max-width: 500px; margin: auto; background: #f4f4f4; border-radius: 10px;">
+    <h2>Buy {{ produce.name }} from {{ farmer.name }}</h2>
+    <p><strong>Farm:</strong> {{ farmer.farm_name }}</p>
+    <p><strong>Location:</strong> {{ farmer.location }}</p>
+    <p><strong>Price:</strong> KSH {{ produce.price }}</p>
+
+    <form method="POST" action="{% url 'initiate_payment' %}">
+        {% csrf_token %}
+        <input type="hidden" name="produce_id" value="{{ produce.id }}">
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" placeholder="07XXXXXXXX" required>
+        </div>
+        <div class="form-group">
+            <label for="amount">Amount (KSH):</label>
+            <input type="number" id="amount" name="amount" value="{{ produce.price }}" required>
+        </div>
+        <button type="submit" class="btn btn-success">Pay Now (STK Push)</button>
+    </form>
+</section>
+{% endblock %}
+

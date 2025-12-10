@@ -1,0 +1,13 @@
+{% extends 'nutriconnect/base.html' %}
+{% block title %}Add Produce{% endblock %}
+
+{% block content %}
+<section style="padding: 50px 20px; max-width: 500px; margin: auto; background: #f4f4f4; border-radius: 10px;">
+    <h2>Add Produce for {{ farmer.farm_name }}</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Add Produce</button>
+    </form>
+</section>
+{% endblock %}

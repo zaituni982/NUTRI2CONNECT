@@ -1,0 +1,36 @@
+{% extends "nutriconnect/base.html" %}
+{% block content %}
+
+<h2 style="text-align:center; margin:20px;">Produce from {{ farmer.name }}</h2>
+
+{% if user.is_authenticated %}
+    <a href="{% url 'add_produce' farmer.id %}" class="btn btn-primary" style="margin-bottom: 20px;">
+        Add New Produce
+    </a>
+{% endif %}
+
+
+<div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
+    {% for item in produce_list %}
+    <div style="background:white; padding:20px; width:220px; text-align:center;
+                border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,0.1);">
+
+        <img src="https://source.unsplash.com/random/80x80/?vegetable,produce&v=10"
+             style="margin-bottom:10px;">
+
+        <h4>{{ item.name }}</h4>
+        <p><strong>Price:</strong> KSH {{ item.price }}</p>
+
+        <a href="{% url 'buy_produce' item.id %}"
+           style="display:block; margin-top:10px; padding:8px;
+                  background:#ff6f61; color:white; border-radius:6px;
+                  text-decoration:none;">
+            Buy Now
+        </a>
+    </div>
+    {% empty %}
+    <p>No produce available.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

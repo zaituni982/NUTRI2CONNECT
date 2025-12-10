@@ -54,12 +54,16 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'nutri.urls'
 
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'login'
-LOGIN_REDIRECT_URL = 'marketplace'
-LOGOUT_REDIRECT_URL = 'home'
+# --- Authentication URL Settings ---
 
+# URL where unauthenticated users are redirected when accessing a @login_required view.
+LOGIN_URL = 'login'
+
+# URL to redirect to after successful login (defaulting to the 'marketplace' page)
+LOGIN_REDIRECT_URL = 'marketplace'
+
+# URL to redirect to after successful logout (defaulting to the 'home' page)
+LOGOUT_REDIRECT_URL = 'home'
 
 
 TEMPLATES = [
@@ -130,12 +134,16 @@ USE_TZ = True
 MPESA_ENVIRONMENT = 'sandbox'
 
 # Credentials from your Daraja App
-MPESA_CONSUMER_KEY = 'CONSUMER KEY'
-MPESA_CONSUMER_SECRET = 'YOUR_CONSUMER_SECRET'
+MPESA_CONSUMER_KEY = 'GKwF29dNNAu5ofeteBSXu3hxjbe6r1c1tpOcEvnWleK8jTcz'
+MPESA_CONSUMER_SECRET = 'yz78UtNsDnNGIEEMGIa6Kg70jHF5F3rblngJs6eYPcAeZwseJMzPBzB7Jh7igetsYOUR_CONSUMER_SECRET'
 
 # For Lipa na M-PESA Online (STK Push)
 MPESA_EXPRESS_SHORTCODE = '174379' # Use 174379 for Safaricom Sandbox
-MPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ad71a808947' # Use the Sandbox passkey
+MPESA_PASSKEY = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ad71a808947' # Use the Sandbox 
+
+# Public URL for callbacks (must be accessible from Safaricom's servers)
+SITE_URL = os.environ.get('SITE_URL', 'https://yourdomain.com')
+MPESA_API_URL = SITE_URL
 
 # You must have a public URL for the callback. For testing, you must use NGROK or a similar service.
 # For now, you can use a placeholder, but this must be a publicly accessible URL when you test.

@@ -1,0 +1,12 @@
+{% extends 'nutriconnect/base.html' %}
+{% block content %}
+<h2>My Produce</h2>
+<a href="{% url 'produce_create' %}">Add New Produce</a>
+<ul>
+    {% for item in produce_items %}
+    <li>{{ item.name }} - KSH {{ item.price }}</li>
+    {% empty %}
+    <li>No produce available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -137,29 +137,6 @@
     </div>
 </section>
 
-<section style="padding: 50px 20px;">
-    <form method="POST" action="{% url 'initiate_payment' %}" class="payment-form">
-        {% csrf_token %}
-        <h2>M-Pesa Payment</h2>
-
-        <input type="hidden" name="produce_id" value="{{ produce.id }}">
-
-        <div class="form-group">
-            <label for="phone">Phone Number (e.g., 07XXXXXXXX):</label>
-            <input type="text" id="phone" name="phone" placeholder="0712345678" required>
-        </div>
-
-        <div class="form-group">
-            <label for="amount">Amount (KSH):</label>
-             <input type="number" id="amount" name="amount" value="{{ produce.price }}" required>
-        </div>
-
-        <input type="hidden" id="produce_id" name="produce_id" value="">
-
-        <button type="submit" class="btn">Pay Now (STK Push)</button>
-    </form>
-</section>
-
 <script>
 // Prefill the payment form with produce amount when "Buy Now" is clicked
 document.querySelectorAll('a[href^="{% url "buy_produce" 0 %}"]').forEach(link => {

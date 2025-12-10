@@ -58,12 +58,16 @@ ROOT_URLCONF = 'nutri.urls'
 
 # URL where unauthenticated users are redirected when accessing a @login_required view.
 LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'client_list'  # redirect after login
 
 # URL to redirect to after successful login (defaulting to the 'marketplace' page)
 LOGIN_REDIRECT_URL = 'marketplace'
 
 # URL to redirect to after successful logout (defaulting to the 'home' page)
 LOGOUT_REDIRECT_URL = 'home'
+
+
+
 
 
 TEMPLATES = [

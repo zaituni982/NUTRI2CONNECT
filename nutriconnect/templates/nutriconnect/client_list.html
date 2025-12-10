@@ -5,30 +5,33 @@
 <div class="container mt-5">
     <h2 class="mb-4 text-primary">👥 Registered Clients</h2>
     
+    <!-- Add New Client Button -->
     <a href="{% url 'client_create' %}" class="btn btn-primary mb-4 shadow-sm">
         <i class="fas fa-plus-circle"></i> Add New Client
     </a>
     
+    <!-- Clients Table -->
     <div class="table-responsive">
-        <table class="table table-bordered table-hover table-striped">
+        <table class="table table-bordered table-hover table-striped align-middle">
             <thead class="table-primary">
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Email</th>
                     <th>Contact</th>
                     <th>Location</th>
+                    <th>Interested Produce</th>
                     <th class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
-            {% for client in clients %}
+            {% if clients %}
+                {% for client in clients %}
                 <tr>
                     <td>{{ client.id }}</td>
                     <td>{{ client.name }}</td>
-                    <td>{{ client.email }}</td>
                     <td>{{ client.contact }}</td>
                     <td>{{ client.location }}</td>
+                    <td>{{ client.interested_produce }}</td>
                     <td class="text-center">
                         <a href="{% url 'client_update' client.id %}" class="btn btn-sm btn-outline-primary me-2">Edit</a>
                         
@@ -40,15 +43,17 @@
                         </form>
                     </td>
                 </tr>
-            {% empty %}
+                {% endfor %}
+            {% else %}
                 <tr>
                     <td colspan="6" class="text-center text-muted">No clients found. Start by adding a new client!</td>
                 </tr>
-            {% endfor %}
+            {% endif %}
             </tbody>
         </table>
     </div>
     
+    <!-- Back Button -->
     <a href="{% url 'home' %}" class="btn btn-secondary mt-3">← Back to Home</a>
 </div>
 {% endblock %}

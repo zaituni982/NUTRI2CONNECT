@@ -7,11 +7,12 @@ urlpatterns = [
     # Core & Auth URLs
     path('', views.home, name='home'),
     path('marketplace/', views.marketplace, name='marketplace'),
+    path('register/', views.register, name='register'),
+    path('clients/', views.client_list, name='client_list'),
     path('login/', auth_views.LoginView.as_view(
             template_name='nutriconnect/login.html'
         ), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('register/', views.register, name='register'),
 
     # Payments
     path('pay/', views.payment_stk_push, name='initiate_payment'),

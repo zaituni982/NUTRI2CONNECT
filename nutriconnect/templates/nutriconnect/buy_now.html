@@ -10,19 +10,26 @@
     <p><strong>Location:</strong> {{ farmer.location }}</p>
     <p><strong>Price:</strong> KSH {{ produce.price }}</p>
 
-    <form method="POST" action="{% url 'initiate_payment' %}">
+    <section style="padding: 50px 20px;">
+    <form method="POST" action="{% url 'initiate_payment' %}" class="payment-form">
         {% csrf_token %}
+        <h2>M-Pesa Payment</h2>
+
+        <!-- Hidden produce ID -->
         <input type="hidden" name="produce_id" value="{{ produce.id }}">
+
         <div class="form-group">
-            <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" name="phone" placeholder="07XXXXXXXX" required>
+            <label for="phone">Phone Number (e.g., 07XXXXXXXX):</label>
+            <input type="text" id="phone" name="phone" placeholder="0712345678" required>
         </div>
+
         <div class="form-group">
             <label for="amount">Amount (KSH):</label>
-            <input type="number" id="amount" name="amount" value="{{ produce.price }}" required>
+            <input type="number" id="amount" name="amount" value="{{ produce.price }}" required min="1">
         </div>
+
         <button type="submit" class="btn btn-success">Pay Now (STK Push)</button>
     </form>
 </section>
-{% endblock %}
 
+{% endblock %}

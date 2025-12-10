@@ -129,33 +129,51 @@
 
    
     <!-- Hero Section -->
-    <section class="hero">
-        <section style="background: url('https://source.unsplash.com/random/1600x600/?farm,agriculture&v=1') no-repeat center center; background-size: cover; padding: 80px 20px; color: black; text-align: center;">
+<section class="hero" 
+         style="background-image: url('https://images.pexels.com/photos/2252584/pexels-photo-2252584.jpeg'); 
+                background-size: cover; 
+                background-position: center; 
+                padding: 80px 20px; 
+                text-align: center; 
+                color: white;">
+                
+    <h1>Connecting Farmers & Clients Seamlessly</h1>
+    <p>Your one-stop platform to buy, sell, and collaborate in agriculture</p>
 
-        <h1>Connecting Farmers & Clients Seamlessly</h1>
-        <section style=img src="https://images.pexels.com/photos/2252584/pexels-photo-2252584.jpeg" alt="fruits" width="750" height="250">
-        <p>Your one-stop platform to buy, sell, and collaborate in agriculture</p>
-        <a href="{% url 'register' %}" class="btn">Get Started</a>
-    </section>
+    <a href="{% url 'register' %}" class="btn"
+       style="padding: 12px 25px; background-color: green; 
+              color: white; border-radius: 5px; text-decoration: none;">
+        Get Started
+    </a>
+</section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="feature-card">
-            <img src="https://images.pexels.com/photos/3066025/pexels-photo-3066025.jpeg" alt="Farmer" width="350" height="350"> 
-            <h3>Farmers</h3>
-            <p>List your produce, manage your farm, and reach clients efficiently.</p>
+<!-- Features Section -->
+<section class="features">
+    <div class="feature-card">
+        <div class="feature-img">
+            <img src="https://images.pexels.com/photos/3066025/pexels-photo-3066025.jpeg" alt="Farmer">
         </div>
-        <div class="feature-card">
-            <img src="https://images.pexels.com/photos/7342717/pexels-photo-7342717.jpeg" alt="Client" width="350" height="350"> 
-            <h3>Clients</h3>
-            <p>Find local farmers, place orders, and track your deliveries effortlessly.</p>
+        <h3>Farmers</h3>
+        <p>List your produce, manage your farm, and reach clients efficiently.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-img">
+            <img src="https://images.pexels.com/photos/7342717/pexels-photo-7342717.jpeg" alt="Client">
         </div>
-        <div class="feature-card">
-            <img src="https://images.pexels.com/photos/6829513/pexels-photo-6829513.jpeg" alt="Analytics" width="450" height="450">
-            <h3>Insights & Analytics</h3>
-            <p>Get data-driven insights to improve production, sales, and distribution.</p>
+        <h3>Clients</h3>
+        <p>Find local farmers, place orders, and track your deliveries effortlessly.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-img">
+            <img src="https://images.pexels.com/photos/6829513/pexels-photo-6829513.jpeg" alt="Analytics">
         </div>
-    </section>
+        <h3>Insights & Analytics</h3>
+        <p>Get data-driven insights to improve production, sales, and distribution.</p>
+    </div>
+</section>
+
 
     <!-- About Section -->
     <section class="about" id="about">
@@ -166,6 +184,7 @@
         profile management, and data analytics to help users make informed decisions.</p>
     </section>
 
+    
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 NUTRI2CONNECT | Contact us: <a href="mailto:support@nutri2connect.com">support@nutri2connect.com</a></p>

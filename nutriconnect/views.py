@@ -25,12 +25,11 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
-            return redirect('marketplace')
+            login(request, user)  # Log the user in immediately
+            return redirect('client_list')  # Redirect to clients list
     else:
         form = UserCreationForm()
     return render(request, 'nutriconnect/register.html', {'form': form})
-
 
 def marketplace(request):
     farmers = Farmer.objects.all()
@@ -63,6 +62,12 @@ def add_produce(request, farmer_id):
         return redirect('farmer_produce', id=farmer.id)
     
     return render(request, 'nutriconnect/produce_form.html', {'form': form, 'farmer': farmer})
+
+
+@login_required
+def client_list(request):
+    clients = Client.objects.all()
+    return render(request, "nutriconnect/client_list.html", {"clients": clients})
 
 
 @login_required
@@ -111,8 +116,7 @@ def farmer_delete(request, id):
 
 def client_list(request):
     clients = Client.objects.all()
-    return render(request, 'nutriconnect/client_list.html', {'clients': clients})
-
+    return render(request, "nutriconnect/client_list.html", {"clients": clients})
 
 def client_create(request):
     form = ClientForm(request.POST or None)
@@ -171,17 +175,22 @@ def payment_stk_push(request):
     amount = request.POST.get('amount')
     phone = request.POST.get('phone')
 
-    if not produce_id or not amount or not phone:
-        return HttpResponse("Missing required fields.", status=400)
+    # Validate produce_id
+    if not produce_id or not produce_id.isdigit():
+        return HttpResponse("Invalid produce ID.", status=400)
 
-    produce = get_object_or_404(Produce, id=produce_id)
+    produce = get_object_or_404(Produce, id=int(produce_id))
     farmer = produce.farmer
 
+    # Validate amount
     try:
         amount = int(amount)
-    except ValueError:
+        if amount <= 0:
+            return HttpResponse("Invalid amount.", status=400)
+    except (TypeError, ValueError):
         return HttpResponse("Invalid amount.", status=400)
 
+    # Create order
     order = PurchaseOrder.objects.create(
         client=request.user,
         produce=produce,
@@ -191,6 +200,7 @@ def payment_stk_push(request):
         status='PENDING'
     )
 
+    # Initiate STK push
     cl = MpesaClient()
     callback_url = f"{settings.SITE_URL}/mpesa/callback/{order.id}/"
 
@@ -203,7 +213,6 @@ def payment_stk_push(request):
     )
 
     return HttpResponse("STK Push Initiated. Check your phone.")
-
 
 @csrf_exempt
 def mpesa_callback(request, order_id):
